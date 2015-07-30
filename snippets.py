@@ -19,7 +19,6 @@
                                         print "nonzero exit code from cmdline process"
                                         return Response("Command Line Process Returned Nonzero Code", status=500)
 
-
 	            		# post output to s3 object
 	                        print "placing output at s3 destination"
                                 output_text="some-text"
