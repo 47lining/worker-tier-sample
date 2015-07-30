@@ -1,0 +1,6 @@
+{
+    "S3_Input_Bucket": "poc-inputs-tdwilliamson-com",
+    "S3_Input_Key": "dataset1/random.txt",
+    "S3_Output_Bucket": "poc-outputs-tdwilliamson-com",
+    "S3_Output_Prefix": "dataset1"
+}

@@ -83,6 +83,7 @@ def process_poc():
                 try:
                         # process input parameters
                         if not request.json.has_key('S3_Input_Bucket') or not request.json.has_key('S3_Input_Key') or not request.json.has_key('S3_Output_Bucket') or not request.json.has_key('S3_Output_Prefix'):
+                                print "Malformed Request, required parameters not found"
                                 response = Response("Malformed Request", status=500)
                         else:
                                 S3_Input_Bucket = request.json["S3_Input_Bucket"]
@@ -123,7 +124,7 @@ def process_poc():
 				k = boto.s3.key.Key(b)
                                 dest_key_prefix=S3_Output_Prefix
                                 dest_key_suffix=os.path.basename(S3_Input_Key)
-				k.key = "{0}/{1}.txt".format(dest_key_prefix, dest_key_suffix)
+				k.key = "{0}/{1}".format(dest_key_prefix, dest_key_suffix)
 				k.set_contents_from_string(process_out)
 
 	                        print "returning OK status"
