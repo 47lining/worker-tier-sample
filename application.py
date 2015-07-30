@@ -123,7 +123,7 @@ def process_poc():
 				k = boto.s3.key.Key(b)
                                 dest_key_prefix=S3_Output_Prefix
                                 dest_key_suffix=os.path.basename(S3_Input_Key)
-				k.key = "{0}/{1}.txt".format(dest_key_prefix, dest_key_suffix))
+				k.key = "{0}/{1}.txt".format(dest_key_prefix, dest_key_suffix)
 				k.set_contents_from_string(process_out)
 
 	                        print "returning OK status"
