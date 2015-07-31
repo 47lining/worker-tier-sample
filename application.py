@@ -82,14 +82,17 @@ def process_poc():
 
                 try:
                         # process input parameters
-                        if not request.json.has_key('S3_Input_Bucket') or not request.json.has_key('S3_Input_Key') or not request.json.has_key('S3_Output_Bucket') or not request.json.has_key('S3_Output_Prefix'):
+                        # WANT: s3.bucket.name
+                        #       s3.object.key
+                        if not request.json.has_key('s3'):
                                 print "Malformed Request, required parameters not found"
                                 response = Response("Malformed Request", status=500)
                         else:
-                                S3_Input_Bucket = request.json["S3_Input_Bucket"]
-                                S3_Input_Key = request.json["S3_Input_Key"]
-                                S3_Output_Bucket = request.json["S3_Output_Bucket"]
-                                S3_Output_Prefix = request.json["S3_Output_Prefix"]
+                                s3 = request.json["s3"]
+                                S3_Input_Bucket = s3["bucket"]["name"]
+                                S3_Input_Key = s3["object"]["key"]
+                                S3_Output_Bucket = "poc-outputs-tdwilliamson-com"
+                                S3_Output_Prefix = "dataset1"
 
                                 print "S3_Input_Bucket", S3_Input_Bucket
                                 print "S3_Input_Key", S3_Input_Key
