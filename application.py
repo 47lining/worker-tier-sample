@@ -97,7 +97,7 @@ def process_poc():
                                 print "payload: ", payload
                                 records = payload["Records"]
                                 print records
-                                first=payload[0]
+                                first=records[0]
                                 print "First Entry: ", first
                                 s3=first["s3"]
                                 print "received s3 payload: ", s3
