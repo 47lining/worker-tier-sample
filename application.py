@@ -88,10 +88,10 @@ def process_poc():
                                 print "Malformed Request, required parameters not found"
                                 response = Response("Malformed Request", status=500)
                         else:
-                                s3 = request.json["s3"]
+                                s3 = request.json["message"]["Records"][0]["s3"]
                                 S3_Input_Bucket = s3["bucket"]["name"]
                                 S3_Input_Key = s3["object"]["key"]
-                                S3_Output_Bucket = "poc-outputs-tdwilliamson-com"
+                                S3_Output_Bucket = "poc-outputs-eedar-com"
                                 S3_Output_Prefix = "dataset1"
 
                                 print "S3_Input_Bucket", S3_Input_Bucket
