@@ -89,17 +89,7 @@ def process_poc():
                                 print "Malformed Request, required parameters not found"
                                 response = Response("Malformed Request", status=500)
                         else:
-                                message = request.json["Message"]
-                                print "Received Message: ", message
-                                print "Message JSON dump: "
-                                print json.dumps(message, sort_keys=True, indent=4, separators=(',', ': '))
-                                payload = json.loads(message)
-                                print "payload: ", payload
-                                records = payload["Records"]
-                                print records
-                                first=records[0]
-                                print "First Entry: ", first
-                                s3=first["s3"]
+                                s3=json.loads(request.json["Message")["Records"][0]["s3"]
                                 print "received s3 payload: ", s3
                                 S3_Input_Bucket = s3["bucket"]["name"]
                                 S3_Input_Key = s3["object"]["key"]
