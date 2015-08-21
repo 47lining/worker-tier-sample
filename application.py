@@ -92,7 +92,9 @@ def process_poc():
                         else:
                                 message = request.json["Message"]
                                 print "Received Message: ", message
-                                s3 = message["Records"][0]["s3"]
+                                first=message[0]
+                                print "First Entry: ", first
+                                s3=first["s3"]
                                 print "received s3 payload: ", s3
                                 S3_Input_Bucket = s3["bucket"]["name"]
                                 S3_Input_Key = s3["object"]["key"]
