@@ -95,6 +95,8 @@ def process_poc():
                                 print json.dumps(message, sort_keys=True, indent=4, separators=(',', ': '))
                                 payload = json.loads(message)
                                 print "payload: ", payload
+                                records = payload["Records"]
+                                print records
                                 first=payload[0]
                                 print "First Entry: ", first
                                 s3=first["s3"]
