@@ -92,7 +92,8 @@ def process_poc():
                         else:
                                 message = request.json["Message"]
                                 print "Received Message: ", message
-                                first=message[0]
+                                payload = json.loads(message)
+                                first=payload[0]
                                 print "First Entry: ", first
                                 s3=first["s3"]
                                 print "received s3 payload: ", s3
