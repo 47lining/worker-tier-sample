@@ -85,7 +85,6 @@ def process_poc():
                         # process input parameters
                         # WANT: s3.bucket.name
                         #       s3.object.key
-                        print json.dumps(request.json, sort_keys=True, indent=4, separators=(',', ': '))
                         if not request.json.has_key('Message'):
                                 print "Malformed Request, required parameters not found"
                                 response = Response("Malformed Request", status=500)
@@ -93,6 +92,8 @@ def process_poc():
                                 message = request.json["Message"]
                                 print "Received Message: ", message
                                 payload = json.loads(message)
+                                print "Message JSON dump: "
+                                print json.dumps(request.json, sort_keys=True, indent=4, separators=(',', ': '))
                                 first=payload[0]
                                 print "First Entry: ", first
                                 s3=first["s3"]
