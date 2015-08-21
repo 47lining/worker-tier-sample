@@ -15,6 +15,7 @@
 import logging
 import json
 import subprocess
+import json
 
 import flask
 from flask import request, Response
@@ -84,11 +85,15 @@ def process_poc():
                         # process input parameters
                         # WANT: s3.bucket.name
                         #       s3.object.key
-                        if not request.json.has_key('s3'):
+                        print json.dumps(request.json, sort_keys=True, indent=4, separators=(',', ': '))
+                        if not request.json.has_key('Message'):
                                 print "Malformed Request, required parameters not found"
                                 response = Response("Malformed Request", status=500)
                         else:
-                                s3 = request.json["message"]["Records"][0]["s3"]
+                                message = request.json["Message"]
+                                print "Received Message: ", message
+                                s3 = message["Records"][0]["s3"]
+                                print "received s3 payload: ", s3
                                 S3_Input_Bucket = s3["bucket"]["name"]
                                 S3_Input_Key = s3["object"]["key"]
                                 S3_Output_Bucket = "poc-outputs-eedar-com"
